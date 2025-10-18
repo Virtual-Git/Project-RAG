@@ -1,0 +1,8 @@
+chromadb
+dotenv
+langchain
+langchain_google_genai
+unstructured
+langchain_chroma
+markdown
+Flask

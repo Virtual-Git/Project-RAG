@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <h3>Indexed Files</h3>
+        <ul id="file-list">
+            {% for file in files %}
+                <li>{{ file }}</li>
+            {% else %}
+                <li id="no-files-placeholder">No .md files found.</li>
+            {% endfor %}
+        </ul>
+
+        <form id="upload-form" class="sidebar-form">
+            <h4>Upload New Book</h4>
+            <input type="file" id="file-input" name="file" accept=".md" required>
+            <button type="submit" id="upload-button">Upload</button>
+            <div id="upload-status"></div>
+        </form>
+        </div>
+
+    <div id="main-content">
+        
+        <div id="header">
+            <button id="toggle-btn">&#9776;</button>
+            <h1>{{ project_name }}</h1>
+            <button id="restart-btn">Clear Chat</button>
+        </div>
+
+        <div id="chat-container">
+            <div class="chat-message bot-msg">
+                <p>Hello! Ask me any questions about the loaded books.</p>
+            </div>
+        </div>
+
+        <form id="chat-form">
+            <input type="text" id="chat-input" placeholder="Ask about the books..." autocomplete="off" required>
+            <button type="submit">Send</button>
+        </form>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

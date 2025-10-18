@@ -1,0 +1,288 @@
+/* --- Global Variables (Dark Theme) --- */
+:root {
+    --bg-color: #1a1a1b;
+    --sidebar-bg: #222224;
+    --chat-bg: #2d2d2f;
+    --input-bg: #3c3c3e;
+    --text-color: #d7dadc;
+    --text-color-light: #b0b3b8;
+    --border-color: #4d4d4f;
+    --accent-color: #4a90e2;
+    --accent-color-dark: #3a7bc8;
+    --user-msg-bg: #4a90e2;
+    --bot-msg-bg: #3c3c3e;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- Basic Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden; /* Prevent body scroll */
+}
+
+/* --- Sidebar Styles --- */
+#sidebar {
+    height: 100%;
+    width: 250px; /* Start open */
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: var(--sidebar-bg);
+    overflow-x: hidden;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    padding-top: 20px;
+    border-right: 1px solid var(--border-color);
+}
+
+#sidebar h3 {
+    padding: 10px 25px;
+    font-size: 1.2em;
+    color: var(--text-color);
+}
+
+#file-list {
+    list-style-type: none;
+    padding: 0 25px;
+}
+
+#file-list li {
+    padding: 8px 0;
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    text-decoration: none;
+    color: var(--text-color-light);
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: var(--text-color);
+}
+
+/* --- Main Content Styles --- */
+#main-content {
+    transition: margin-left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-left: 250px; /* Same as sidebar width */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Header Styles --- */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: var(--chat-bg);
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+#header h1 {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+#toggle-btn, #restart-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color-light);
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+#restart-btn {
+    font-size: 0.9em;
+}
+
+#toggle-btn:hover, #restart-btn:hover {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+/* --- Chat Container Styles --- */
+#chat-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-message {
+    max-width: 80%;
+    padding: 12px 18px;
+    border-radius: 18px;
+    line-height: 1.5;
+}
+
+.user-msg {
+    background-color: var(--user-msg-bg);
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.bot-msg {
+    background-color: var(--bot-msg-bg);
+    color: var(--text-color);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.bot-msg p, .user-msg p {
+    margin: 0;
+    /* Allow line breaks from the bot */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* "Bot is thinking..." styling */
+.bot-msg.thinking p {
+    color: var(--text-color-light);
+    font-style: italic;
+}
+
+/* Error message styling */
+.bot-msg.error p {
+    color: #ff8a80; /* Light red */
+    font-weight: 500;
+}
+
+
+/* --- Chat Input Form Styles --- */
+#chat-form {
+    display: flex;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--chat-bg);
+    flex-shrink: 0;
+}
+
+#chat-input {
+    flex-grow: 1;
+    border: none;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    padding: 14px 18px;
+    border-radius: 24px;
+    font-size: 1em;
+    outline: none;
+    margin-right: 10px;
+}
+
+#chat-input:focus {
+    box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+#chat-form button {
+    background-color: var(--accent-color);
+    border: none;
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0 25px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#chat-form button:hover {
+    background-color: var(--accent-color-dark);
+}
+
+/* --- Sidebar Upload Form --- */
+.sidebar-form {
+    padding: 15px 25px;
+    border-top: 1px solid var(--border-color);
+}
+
+.sidebar-form h4 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.sidebar-form input[type="file"] {
+    display: block;
+    width: 100%;
+    font-size: 0.8em;
+    color: var(--text-color-light);
+    margin-bottom: 10px;
+}
+
+/* Style the file input button */
+.sidebar-form input[type="file"]::file-selector-button {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sidebar-form input[type="file"]::file-selector-button:hover {
+    background-color: var(--border-color);
+}
+
+.sidebar-form button {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    background-color: var(--accent-color);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sidebar-form button:hover {
+    background-color: var(--accent-color-dark);
+}
+
+/* Style for disabled button during upload */
+.sidebar-form button:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+}
+
+#upload-status {
+    font-size: 0.85em;
+    margin-top: 10px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+#upload-status.success {
+    color: #81c784; /* Light green */
+}
+
+#upload-status.error {
+    color: #ff8a80; /* Light red */
+}

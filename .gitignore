@@ -1,0 +1,9 @@
+# Environment variables
+.env
+
+# ChromaDB database files
+Internal_Directory/ChromaDB/
+
+# Python cache
+__pycache__/
+*.pyc
