@@ -49,7 +49,7 @@ Follow these steps to get the project running locally.
 1.  **Clone the Repository (or download the files):**
 
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/Virtual-Git/Project-RAG.git
     ```
 
 2.  **Create and Activate a Virtual Environment:**
