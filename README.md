@@ -11,7 +11,7 @@ This application provides a clean, modern chat interface where you can ask quest
 
 -----
 
-## 🚀 Core Features
+## 🚀 Core Features.
 
   * **Interactive Chat UI:** A clean, responsive chat interface built with Flask, HTML, CSS, and JavaScript.
   * **RAG Pipeline:** Leverages Google's Gemini (`gemini-2.0-flash`) and Google's embedding models (`embedding-001`) for intelligent, context-aware responses.
